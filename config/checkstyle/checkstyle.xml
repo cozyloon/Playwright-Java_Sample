@@ -9,9 +9,7 @@
     <property name="localeLanguage" value=""/>
     <property name="localeCountry" value=""/>
 
-    <module name="SuppressionFilter">
-        <property name="file" value="config/checkstyle/suppressions.xml"/>
-    </module>
+    <module name="SuppressWarningsFilter" />
     <!--Add more checks from google style guide:-->
     <!--https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml-->
     <module name="TreeWalker">
@@ -32,42 +30,30 @@
         <module name="MethodParamPad"/>
         <module name="NoWhitespaceAfter"/>
         <module name="NoWhitespaceBefore"/>
-        <module name="WhitespaceAfter">
-        </module>
-        <module name="WhitespaceAround">
-        </module>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
         <module name="ModifierOrder"/>
         <module name="RedundantModifier"/>
-        <module name="LeftCurly"/>
+        <module name="LeftCurly">
+            <property name="option" value="eol" />
+        </module>
+        <module name="NeedBraces" />
+        <module name="RightCurly">
+            <property name="option" value="same" />
+        </module>
         <module name="SuperClone"/>
-        <module name="SuperFinalize"/>
-        <module name="DefaultComesLast"/>
-        <module name="MultipleVariableDeclarations"/>
-        <module name="UnnecessaryParentheses"/>
-        <module name="ClassFanOutComplexity">
-            <property name="max" value="30"/>
-        </module>
+
         <module name="CyclomaticComplexity">
-            <property name="max" value="11"/>
+            <property name="max" value="16"/>
         </module>
-        <module name="NPathComplexity"/>
+        <module name="UpperEll" />
         <module name="ArrayTypeStyle"/>
-        <module name="Indentation">
-            <property name="basicOffset" value="2"/>
-            <property name="caseIndent" value="2"/>
-            <property name="throwsIndent" value="2"/>
-            <property name="arrayInitIndent" value="2"/>
-            <property name="lineWrappingIndentation" value="2"/>
-        </module>
+<!--        <module name="Indentation"/>-->
+        <module name="SuppressWarningsHolder" />
     </module>
 
     <module name="LineLength">
         <property name="ignorePattern" value="^ *\* *@see.+$"/>
-        <property name="max" value="136"/>
+        <property name="max" value="120"/>
     </module>
-
-    <module name="NewlineAtEndOfFile">
-        <property name="lineSeparator" value="lf"/>
-    </module>
-    <module name="FileTabCharacter"/>
 </module>
