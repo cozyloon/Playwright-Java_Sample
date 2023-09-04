@@ -7,7 +7,7 @@ jobs:
   delete-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: delete branch
-        uses: SvanBoxel/delete-merged-branch@main
+      - name: Delete merged branch
+        uses: SvanBoxel/delete-merged-branch@1.4.3
         env:
           GITHUB_TOKEN: ${{ secrets.REPO_DELETION }}
