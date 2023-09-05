@@ -17,6 +17,8 @@
         <maven-compiler.version>3.11.0</maven-compiler.version>
         <maven-surefire.version>3.1.2</maven-surefire.version>
         <owner.version>1.0.12</owner.version>
+        <sonar.organization>cozyloon</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
         <dependency>
