@@ -13,25 +13,17 @@ public class TestBase {
 
     public static PropertyConfig propertyConfig = ConfigCache.getOrCreate(PropertyConfig.class);
 
-    @BeforeClass
-    @Parameters("browser")
-    public void beforeClass(String browser) {
-        DriverSetup.launchPlaywright(browser);
-    }
-
-    @AfterClass
-    public void afterClass() {
-        DriverSetup.closePlaywright();
-    }
-
     @BeforeMethod
-    public void beforeMethod() {
+    @Parameters("browser")
+    public void beforeMethod(String browser) {
+        DriverSetup.launchPlaywright(browser);
         DriverSetup.createContextAndPage();
     }
 
     @AfterMethod
     public void afterMethod() {
         DriverSetup.closeContext();
+        DriverSetup.closePlaywright();
     }
 
     @BeforeTest
