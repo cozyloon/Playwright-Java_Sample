@@ -1,11 +1,10 @@
 package tests;
 
-import com.microsoft.playwright.Page;
-import function.Login;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 import util.TestBase;
 
-import java.nio.file.Paths;
 
 import static util.DriverSetup.page;
 
@@ -13,10 +12,21 @@ import static util.DriverSetup.page;
 public class Example extends TestBase {
 
 
-    @Test
-    public void test() {
+    @Test(priority = 1)
+    public void testSlider() {
         page.navigate(propertyConfig.webUrl());
-        Login.userLogin(propertyConfig.username(), propertyConfig.password());
-        page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("screenshot/example.png")));
+        LoginPage login = new LoginPage(page);
+        login.setUsername(propertyConfig.username());
+        login.setPassword(propertyConfig.password());
+        login.clickLoginBtn();
+    }
+
+    @Test(priority = 2)
+    public void testChaining() {
+        page.navigate(propertyConfig.webUrl());
+        LoginPage login = new LoginPage(page);
+        String displayedLogoText = login.userLogin(propertyConfig.username(), propertyConfig.password())
+                .getDisplayedLogoText();
+        Assert.assertEquals(displayedLogoText, "Swag Labs");
     }
 }
